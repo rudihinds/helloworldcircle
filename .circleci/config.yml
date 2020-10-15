@@ -6,10 +6,13 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: 
-          working_directory: /app
-          command: npm install
+          command: |
+            cd app
+            npm install
       - run: 
-          working_directory: /app
-          command: npm test
+          command: |
+            cd app
+            npm test
+
 
     
