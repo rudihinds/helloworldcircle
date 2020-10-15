@@ -3,12 +3,9 @@ jobs:
   build:
     docker: 
       - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
-    working_directory: ~/app
     steps:
       - checkout # check out the code in the project directory
-      - run: echo "hello world" # run the `echo` command
-      - run: cd app
-      - run: ls
+      - working_directory: /app
       - run: npm install
       - run: npm test
 
