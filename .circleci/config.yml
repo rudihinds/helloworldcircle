@@ -15,7 +15,8 @@ jobs:
 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
-      
+          paths:
+            - app
 
       - run: 
           command: |
