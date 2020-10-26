@@ -5,10 +5,19 @@ jobs:
       - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
+      - restore_cache:
+          keys: v1-dependencies-{{ checksum "package.json" }}
+
       - run: 
           command: |
             cd app
             npm install
+
+      - save_cache:
+          keys: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - ./app
+            
       - run: 
           command: |
             cd app
